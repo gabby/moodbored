@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const User = require('../db/user');
+const User = require('../db/users');
 const passport = require('passport')
 const PinterestStrategy = require('passport-pinterest').Strategy;
 

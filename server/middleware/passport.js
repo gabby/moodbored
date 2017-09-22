@@ -1,5 +1,5 @@
 const passport = require('passport');
-const User = require('../db/user');
+const User = require('../db/users');
 const router = require('express').Router();
 
 router.use(passport.initialize());
