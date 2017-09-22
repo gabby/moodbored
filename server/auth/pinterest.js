@@ -3,7 +3,6 @@ const User = require('../db/user');
 const passport = require('passport')
 const PinterestStrategy = require('passport-pinterest').Strategy;
 
-
 passport.use(new PinterestStrategy({
   clientID: process.env.PINTEREST_APP_ID,
   clientSecret: process.env.PINTEREST_APP_SECRET,
@@ -12,15 +11,26 @@ passport.use(new PinterestStrategy({
   state: true
 },
   function(accessToken, refreshToken, profile, done) {
-    User.findOrCreate({ pinterestId: profile.id }, function (err, user) {
-      return done(err, user);
-    });
-  }
-));
+    const pinterestProfile = {
+      username: profile.username,
+      pinterestId: profile.id,
+      image: profile.profileImage.url,
+      last_name: profile._json.data.last_name,
+      first_name: profile._json.data.first_name
+    }
+    User.findOrCreate({
+      where: {pinterestId: profile.id},
+      defaults: pinterestProfile
+    })
+    .spread(user => done(null, user))
+    .catch(done)
+  })
+);
 
 router.get('/', passport.authenticate('pinterest'));
 
 router.get('/callback', passport.authenticate('pinterest', {failureRedirect: '/login' }), (req, res) => {
+    console.log('WE GOT IN')
     res.redirect('/');
   }
 );

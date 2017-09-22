@@ -1,3 +1,4 @@
+require('../secrets');
 const express = require('express');
 const app = express();
 const volleyball = require('volleyball');
@@ -21,6 +22,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 })); 
+
 app.use(require('./middleware/passport'))
 
 app.use('/auth', require('./auth'));

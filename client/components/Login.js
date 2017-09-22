@@ -10,13 +10,13 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div>
-        <a
-          className="btn btn-block btn-social btn-pinterest"
-          href='/auth/pinterest'>
-          <button className="fa fa-pinterest"></button> Sign in with Pinterest
-        </a>
-      </div>
+      <button>
+          <a
+            className="btn btn-block btn-social btn-pinterest"
+            href='/auth/pinterest'>
+            <span className="fa fa-pinterest"></span> Sign in with Pinterest
+          </a>
+      </button>
     )
   }
 };

@@ -2,21 +2,20 @@ const Sequelize = require('sequelize');
 const db = require('./_db');
 
 const User = db.define('user', {
-  first_name: {
-    type: Sequelize.STRING
-  },
-  last_name: {
-    type: Sequelize.STRING
-  },
-  email: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    unique: true
+  username: {
+    type:Sequelize.STRING,
   },
   pinterestId: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    allowNull: false
   },
   image: {
+    type: Sequelize.STRING
+  },
+  last_name:{
+    type:Sequelize.STRING
+  },
+  first_name: {
     type: Sequelize.STRING
   }
 }); 
