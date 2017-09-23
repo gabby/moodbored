@@ -6,14 +6,13 @@ const REMOVE_USER = 'REMOVE_USER';
 
 // ACTION CREATORS
 export const setUser = (user) => ({ type:SET_USER, user });
-
 export const removeUser = () => ({type:REMOVE_USER});
 
 // REDUCER
 export default (currentUser={}, action) => {
   switch(action.type){
     case SET_USER: return action.user; 
-    case REMOVE_USER: return null;
+    case REMOVE_USER: return {};
     default: return currentUser; 
   }
 }
@@ -23,7 +22,7 @@ export const fetchUser = () => dispatch => {
   return axios.get('/api/auth/me')
   .then(res => res.data)
   .then(user => {
-    dispatch(setUser(use));
+    dispatch(setUser(user));
   })
   .catch(console.error);
 }

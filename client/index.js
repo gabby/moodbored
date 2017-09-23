@@ -1,17 +1,26 @@
 import React from 'react';
-import {Route, Switch} from 'react-router-dom';
-import Login from './components/Login';
-import Navbar from './components/Navbar';
+import ReactDOM from 'react-dom';
+import {BrowserRouter as Router} from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './store'
+import Root from './root';
+import './index.scss';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-export default class Index extends React.Component {
-  render() {
-    return (
-      <div>
-        <Navbar />
-        <Switch>
-          <Route exact path='/' component={Login}></Route>
-        </Switch>
-      </div>
-   )
-  }
-}
+const App = () => (
+  <MuiThemeProvider >
+    <Root />
+  </MuiThemeProvider>
+);
+
+ReactDOM.render(
+  <Provider store={store}>
+    <div>
+      <Router>
+        <App />
+      </Router>
+    </div>
+  </Provider>,
+  document.getElementById("app")
+);
+

@@ -1,26 +1,42 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import {BrowserRouter as Router} from 'react-router-dom';
-import { Provider } from 'react-redux';
-import store from './store'
-import Index from './';
-import './index.scss';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { connect } from 'react-redux';
+import {Route, Switch} from 'react-router-dom';
+import Login from './components/Login';
+import Navbar from './components/Navbar';
+import store from './store';
+import { fetchUser } from './reducers';
 
-const App = () => (
-  <MuiThemeProvider >
-    <Index />
-  </MuiThemeProvider>
-);
+class Root extends React.Component {
+  constructor(props){
+    super(props)
+  } 
 
-ReactDOM.render(
-  <Provider store={store}>
-    <div>
-      <Router>
-        <App />
-      </Router>
-    </div>
-  </Provider>,
-  document.getElementById("app")
-);
+  componentDidMount(props){
+    this.props.setCurrentUser();
+  }
 
+  render() {
+    return (
+      <div>
+        <Navbar />
+        <Switch>
+          <Route exact path='/' component={Login}></Route>
+        </Switch>
+      </div>
+   )
+  }
+} 
+
+const mapStateToProps = state =>{
+  return {
+    currentUser: state.currentUser
+  }
+}; 
+
+const mapDispatchToProps = dispatch => ({
+  setCurrentUser: () => {
+    dispatch(fetchUser());
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Root);
