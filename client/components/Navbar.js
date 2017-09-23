@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { logout } from '../redux';
+import { logout } from '../reducers';
+import store from '../store'
 
 
 export const Navbar = (props) => {
@@ -25,7 +26,7 @@ export const Navbar = (props) => {
 
 const mapStateToProps = state =>{
   return {
-    currentUser
+    currentUser: state.currentUser
   }
 }; 
 
@@ -35,6 +36,6 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
 
 

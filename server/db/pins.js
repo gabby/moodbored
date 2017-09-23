@@ -15,16 +15,16 @@ const Pin = db.define('pin', {
     type:Sequelize.STRING
   },
   media: {
-    type:Sequelize.STRING
+    type:Sequelize.JSONB
   },
   attribution: {
-    type:Sequelize.STRING
+    type:Sequelize.JSONB
   },
   image: {
-    type:Sequelize.STRING
+    type:Sequelize.JSONB
   },
   metadata:{
-    type:Sequelize.TEXT
+    type:Sequelize.JSONB
   }
 })
 

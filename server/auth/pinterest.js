@@ -11,18 +11,20 @@ passport.use(new PinterestStrategy({
   state: true
 },
   function(accessToken, refreshToken, profile, done) {
-    const pinterestProfile = {
-      username: profile.username,
-      pinterestId: profile.id,
-      image: profile.profileImage.url,
-      last_name: profile._json.data.last_name,
-      first_name: profile._json.data.first_name
-    }
     User.findOrCreate({
       where: {pinterestId: profile.id},
-      defaults: pinterestProfile
+      defaults: {
+        username: profile.username,
+        pinterestId: profile.id,
+        pinterestAccessToken: accessToken,
+        image: profile.profileImage.url,
+        last_name: profile._json.data.last_name,
+        first_name: profile._json.data.first_name
+      }
     })
-    .spread(user => done(null, user))
+    .spread(user => { 
+      done(null, user)
+    })
     .catch(done)
   })
 );

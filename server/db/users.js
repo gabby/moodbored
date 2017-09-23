@@ -6,6 +6,10 @@ const User = db.define('user', {
     type: Sequelize.STRING,
     allowNull: false
   },
+  pinterestAccessToken:{
+    type: Sequelize.STRING,
+    allowNull: false
+  },
   first_name: {
     type: Sequelize.STRING
   },
