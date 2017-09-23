@@ -28,6 +28,7 @@ app.use(require('./middleware/passport'))
 app.use('/auth', require('./auth'));
 app.use('/api', require('./api'));
 
+
 app.get('*', (req, res, next) => res.sendFile(path.join(__dirname, '../public/index.html')));
 
 app.use((err, req, res, next) => {

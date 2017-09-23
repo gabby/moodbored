@@ -1,20 +1,18 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import {BrowserRouter as Router} from 'react-router-dom';
 import {Route, Switch} from 'react-router-dom';
-import { Provider } from 'react-redux';
-import Login from './components/Login.js';
-import './index.scss';
+import Login from './components/Login';
+import Navbar from './components/Navbar';
 
-ReactDOM.render(
-  <div>
-    <Router>
+export default class Index extends React.Component {
+  render() {
+    console.log('inside index')
+    return (
       <div>
+        <Navbar />
         <Switch>
           <Route exact path='/' component={Login}></Route>
         </Switch>
       </div>
-    </Router>
-  </div>,
-  document.getElementById('app')
-);
+   )
+  }
+}

@@ -1,13 +1,13 @@
-* {
-  background: linear-gradient(270deg, #15785f, #141ce0, #8114e0, #e0149d, #e0af14, #ea6a02);
-  background-size: 1200% 1200%;
+.navbar {
+  background: linear-gradient(269deg, #07a3f4, #80bff8, #e6eef4, #b0b2b3);
+  background-size: 1600% 1600%;
   
-  animation: AnimationName 28s ease infinite;
+  animation: AnimationName 60s ease infinite;
   
   @keyframes AnimationName { 
-      0%{background-position:0% 50%}
+      0%{background-position:0% 51%}
       50%{background-position:100% 50%}
-      100%{background-position:0% 50%}
+      100%{background-position:0% 51%}
   }
 }
 

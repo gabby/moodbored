@@ -7,29 +7,14 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./bootstrap-social-gh-pages/bootstrap-social.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" defer></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" defer></script>
+    <script src="bundle.js" defer></script>
 
     <title>MoodBored</title>
-    <script src='/bundle.js' defer></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script>
-      window.pAsyncInit = function() {
-          PDK.init({
-              appId: process.env.PINTEREST_APP_ID, // Change this
-              cookie: true
-          });
-      };
-  
-      (function(d, s, id){
-          var js, pjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) {return;}
-          js = d.createElement(s); js.id = id;
-          js.src = "//assets.pinterest.com/sdk/sdk.js";
-          pjs.parentNode.insertBefore(js, pjs);
-      }(document, 'script', 'pinterest-jssdk'));
-  </script>
+    
   </head>
-  <body>
-    <div id='app'></div>
+  <body>    
+    <div id="app"></div>
   </body>
 </html>
