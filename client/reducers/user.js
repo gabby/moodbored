@@ -23,7 +23,7 @@ export const fetchUser = () => dispatch => {
   return axios.get('/api/auth/me')
   .then(res => res.data)
   .then(user => {
-    dispatch(setUser(user));
+    dispatch(setUser(use));
   })
   .catch(console.error);
 }

@@ -6,6 +6,7 @@ import store from './store'
 import Index from './';
 import './index.scss';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import store from './store';
 
 const App = () => (
   <MuiThemeProvider >
@@ -14,7 +15,7 @@ const App = () => (
 );
 
 ReactDOM.render(
-  <Provider store={store}> 
+  <Provider store={store}>
     <div>
       <Router>
         <App />

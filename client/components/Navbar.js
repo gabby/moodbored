@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../reducers';
-import store from '../store'
+import store from '../store';
 
 
 export const Navbar = (props) => {
