@@ -1,21 +1,40 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { logout } from '../redux';
 
 
-export default () => {
+export const Navbar = (props) => {
   return (
     <nav className="navbar">
         <div>
-          <Link to="/logout" className="pull-right">
-            <button type="button" className="btn btn-default btn-sm">
+          {
+            props.currentUser.id ? 
+          <Link to="/" className="pull-right">
+            <button 
+            type="button" className="btn btn-default btn-sm"
+            onClick={props.handleLogout}>
               Logout
             </button>
-          </Link>
+          </Link> : null
+          }
         </div>
     </nav>
   )
 }
 
+const mapStateToProps = state =>{
+  return {
+    currentUser
+  }
+}; 
+
+const mapDispatchToProps = dispatch => ({
+  handleLogout: () => {
+    dispatch(logout());
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
 
 
