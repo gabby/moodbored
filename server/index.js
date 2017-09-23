@@ -5,7 +5,7 @@ const volleyball = require('volleyball');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const path = require('path');
-const db = require('./db')
+const db = require('./db');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sessionStore = new SequelizeStore({ db: db });
 
@@ -38,7 +38,7 @@ app.use((err, req, res, next) => {
 }); 
 
 const port = process.env.PORT || 3000; 
-db.sync()
+ db.sync()
 .then (() => {
   app.listen(3000, () => console.log('Listening on 3000'))
 })

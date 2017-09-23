@@ -14,7 +14,7 @@ export default (currentUser={}, action) => {
   switch(action.type){
     case SET_USER: return action.user; 
     case REMOVE_USER: return null;
-    default: return user; 
+    default: return currentUser; 
   }
 }
 
@@ -23,7 +23,7 @@ export const fetchUser = () => dispatch => {
   return axios.get('/api/auth/me')
   .then(res => res.data)
   .then(user => {
-    dispatch(setUser(user));
+    dispatch(setUser(use));
   })
   .catch(console.error);
 }

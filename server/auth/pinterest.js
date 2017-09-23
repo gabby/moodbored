@@ -14,6 +14,7 @@ passport.use(new PinterestStrategy({
     const pinterestProfile = {
       username: profile.username,
       pinterestId: profile.id,
+      pinterestAccessToken: accessToken,
       image: profile.profileImage.url,
       last_name: profile._json.data.last_name,
       first_name: profile._json.data.first_name
@@ -22,7 +23,10 @@ passport.use(new PinterestStrategy({
       where: {pinterestId: profile.id},
       defaults: pinterestProfile
     })
-    .spread(user => done(null, user))
+    .spread(user => {
+      // console.log(user);
+      done(null, user)
+    })
     .catch(done)
   })
 );

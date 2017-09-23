@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import Index from './';
 import './index.scss';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import store from './store';
 
 const App = () => (
   <MuiThemeProvider >
@@ -13,11 +14,13 @@ const App = () => (
 );
 
 ReactDOM.render(
-  <div>
-    <Router>
-      <App />
-    </Router>
-  </div>,
+  <Provider store={store}>
+    <div>
+      <Router>
+        <App />
+      </Router>
+    </div>
+  </Provider>,
   document.getElementById("app")
 );
 

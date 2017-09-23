@@ -24,7 +24,7 @@ const Pin = db.define('pin', {
     type:Sequelize.STRING
   },
   metadata:{
-    type:Sequelize.TEXT
+    type:Sequelize.JSONB
   }
 })
 
