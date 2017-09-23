@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('./_db');
 const Request = require('request-promise');
+const Async = require('async');
 
 
 const User = db.define('user', {
@@ -49,9 +50,6 @@ User.afterCreate(user => {
   
 })
 
-// user after create hook
-  // make api call to fetch 100 pins
-    // save all pins to Pin collection
 
 
 
