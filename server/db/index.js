@@ -7,6 +7,7 @@ const Pins_MoodBoreds = require('./pins_moodboreds_join');
 
 User.hasMany(Pin);
 User.hasMany(MoodBored);
+Pin.belongsTo(User);
 Pin.belongsToMany(MoodBored, {through: Pins_MoodBoreds});
 MoodBored.belongsToMany(Pin, {through: Pins_MoodBoreds});
 

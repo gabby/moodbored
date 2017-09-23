@@ -32,7 +32,7 @@ passport.use(new PinterestStrategy({
 router.get('/', passport.authenticate('pinterest'));
 
 router.get('/callback', passport.authenticate('pinterest', {failureRedirect: '/login' }), (req, res) => {
-    res.redirect('/');
+    res.redirect('/home');
   }
 );
 

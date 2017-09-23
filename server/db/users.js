@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const db = require('./_db');
+const Pin = require('./pins');
 const Request = require('request-promise');
 const Async = require('async');
 
@@ -32,20 +33,18 @@ User.afterCreate(user => {
     uri: 'https://api.pinterest.com/v1/me/pins',
     qs: {
       access_token: user.pinterestAccessToken,
-      fields: 'id,link,note,color,image,attribution,media,metadata',
+      fields: 'id,url,link,note,color,image,attribution,media,metadata,creator',
       limit: 100
     },
     json: true
   })
-  .then((res) => {
-    Async.mapLimit(res.data, 1, (pin, cb) => {
-      db.models.pin.create({
-      })
-        .then(() => cb())
-        .catch((err) => cb(err))
-    }, (err, result) => {
-      
-    })
+  .then(res => {
+    const data = res.data
+    return Promise.all(data.map(pin => {
+      return Pin.create(pin)
+      .then(newPin => newPin.setUser(user.id))
+    }))
+    .catch(console.error);
   })
   
 })

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import {Route, Switch} from 'react-router-dom';
 import Login from './components/Login';
 import Navbar from './components/Navbar';
+import Home from './components/Home';
 import store from './store';
 import { fetchUser } from './reducers';
 
@@ -21,6 +22,7 @@ class Root extends React.Component {
         <Navbar />
         <Switch>
           <Route exact path='/' component={Login}></Route>
+          <Route exact path='/home' component={Home}></Route>
         </Switch>
       </div>
    )

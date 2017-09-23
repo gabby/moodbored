@@ -19,7 +19,7 @@ export default (currentUser={}, action) => {
 
 //THUNK
 export const fetchUser = () => dispatch => {
-  return axios.get('/api/auth/me')
+  return axios.get('/auth/me')
   .then(res => res.data)
   .then(user => {
     dispatch(setUser(user));
@@ -29,6 +29,6 @@ export const fetchUser = () => dispatch => {
 
 export const logout = () => dispatch => {
   dispatch(removeUser());
-  axios.delete('/api/auth/me')
+  axios.delete('/auth/me/logout')
   .catch(err => console.error('logout unsuccessful', err));
 }; 
