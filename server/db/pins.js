@@ -2,9 +2,8 @@ const Sequelize = require('sequelize');
 const db = require('./_db');
 
 const Pin = db.define('pin', {
-  id: {
+  pinterestId: {
     type:Sequelize.STRING,
-    primaryKey:true
   },
   link: {
     type:Sequelize.STRING

@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import store from '../store';
 import Paper from 'material-ui/Paper';
+import { fetchPin } from '../reducers';
 
 
 
@@ -21,6 +22,8 @@ class RandomBoard extends Component {
       counter++;
     }
   }
+
+
   render(props){
     let pins = this.props.userPins[0];
     let randomIdx = this.state.randomArr
@@ -28,15 +31,19 @@ class RandomBoard extends Component {
       <div>
        {
         randomIdx.length && randomIdx.map(idx => {
+          let pinId = pins[idx].id
           return <Paper 
             zDepth={1} 
             style={{overflow:'hidden', height:300, width:300, margin:20}}
-            key={randomIdx.indexOf(idx)}>
-              <a href={pins[idx].link}>
+            key={randomIdx.indexOf(idx)}
+            onClick={() => this.props.setSelectedPin(pinId)}>
+              <NavLink 
+                to={`/pins/${pinId}`}
+                >
                 <img 
                 src={pins[idx].image.original.url} 
                 style={{width:'100%', height:'auto'}}/>
-              </a>
+              </NavLink>
           </Paper>
         }) 
        }
@@ -51,5 +58,10 @@ const mapStateToProps = state =>{
   }
 }; 
 
+const mapDispatchToProps = dispatch => ({
+  setSelectedPin: pinId => {
+    dispatch(fetchPin(pinId));
+  }
+})
 
-export default connect(mapStateToProps)(RandomBoard);
+export default connect(mapStateToProps, mapDispatchToProps)(RandomBoard);

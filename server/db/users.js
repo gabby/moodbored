@@ -41,7 +41,18 @@ User.afterCreate(user => {
   .then(res => {
     const data = res.data
     return Promise.all(data.map(pin => {
-      return Pin.create(pin)
+      return Pin.create({
+        pinterestId: pin.id,
+        url: pin.url, 
+        link: pin.link,
+        note: pin.note,
+        color: pin.color,
+        image: pin.image, 
+        attribution: pin.attribution,
+        media: pin.media,
+        metadata: pin.metadata,
+        creator: pin.creator
+      })
       .then(newPin => newPin.setUser(user.id))
     }))
     .catch(console.error);
