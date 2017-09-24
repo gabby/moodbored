@@ -39,14 +39,16 @@ User.afterCreate(user => {
     json: true
   })
   .then(res => {
-    const data = res.data
-    return Promise.all(data.map(pin => {
-      return Pin.create(pin)
-      .then(newPin => newPin.setUser(user.id))
-    }))
-    .catch(console.error);
-  })
-  
+    let idx = 0;
+    Async.mapLimit(res.data[idx], 1, (pin, cb) => {
+      db.models.pin.create()
+        .then(() => {
+          idx++;
+          cb()})
+        .catch((err) => cb(err))
+        },(err, result) => {}
+    )
+  })  
 })
 
 
