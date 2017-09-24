@@ -4,18 +4,14 @@ import {Route, Switch} from 'react-router-dom';
 import Login from './components/Login';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
+import RandomBoard from './components/RandomBoard';
 import store from './store';
-import { fetchUser } from './reducers';
 
 
-class Root extends React.Component {
+export default class Root extends React.Component {
   constructor(props){
     super(props)
   } 
-
-  componentDidMount(props){
-    this.props.setCurrentUser();
-  }
 
   render() {
     return (
@@ -24,22 +20,11 @@ class Root extends React.Component {
         <Switch>
           <Route exact path='/' component={Login}></Route>
           <Route exact path='/home' component={Home}></Route>
+          <Route exact path='/random-bored' component={RandomBoard}></Route>
         </Switch>
       </div>
    )
   }
 } 
 
-const mapStateToProps = state =>{
-  return {
-    currentUser: state.currentUser
-  }
-}; 
 
-const mapDispatchToProps = dispatch => ({
-  setCurrentUser: () => {
-    dispatch(fetchUser());
-  }
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Root);

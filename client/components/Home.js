@@ -2,12 +2,16 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import store from '../store';
+import { fetchUser } from '../reducers';
 
-
-export default class Home extends Component {
+class Home extends Component {
   constructor(props){
     super(props)
   }
+  componentDidMount(props){
+    this.props.setCurrentUser();
+  }
+
   render(){
     return (
       <div>
@@ -17,3 +21,16 @@ export default class Home extends Component {
   }
 };
   
+const mapStateToProps = state =>{
+  return {
+    currentUser: state.currentUser
+  }
+}; 
+
+const mapDispatchToProps = dispatch => ({
+  setCurrentUser: () => {
+    dispatch(fetchUser());
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
