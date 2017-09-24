@@ -9,13 +9,15 @@ class Home extends Component {
     super(props)
   }
   componentDidMount(props){
-    this.props.setCurrentUser();
+    this.props.initializeState();
   }
 
   render(){
     return (
       <div>
-        <button>Change My Mood</button>
+        <Link to="/random-bored">
+          <button>Change My Mood</button>
+        </Link>
       </div>
     )
   }
@@ -28,7 +30,7 @@ const mapStateToProps = state =>{
 }; 
 
 const mapDispatchToProps = dispatch => ({
-  setCurrentUser: () => {
+  initializeState: () => {
     dispatch(fetchUser());
   }
 })
