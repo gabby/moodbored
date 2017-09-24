@@ -7,6 +7,7 @@ import Home from './components/Home';
 import store from './store';
 import { fetchUser } from './reducers';
 
+
 class Root extends React.Component {
   constructor(props){
     super(props)

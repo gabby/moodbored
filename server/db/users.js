@@ -50,7 +50,4 @@ User.afterCreate(user => {
 })
 
 
-
-
-
 module.exports = User;
