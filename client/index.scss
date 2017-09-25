@@ -1,6 +1,6 @@
-body .change-mood {
-  background: linear-gradient(270deg, #077a46, #f4ebc0, #f6f5f2, #d1d0cf, #66b652, #f0ebc3);
-  background-size: 1200% 1200%;
+.change-mood {
+  background: linear-gradient(270deg, #f4ebc0, #f6f5f2, #d1d0cf, #bae8f4, #a5ef9b, #e7c0f0, #f6dad3, #f0dabc, #f0bcd1, #bcf0d6);
+  background-size: 2000% 2000%;
   
   animation: AnimationName 30s ease infinite;
   
@@ -13,5 +13,10 @@ body .change-mood {
 
 .fa {
   background:#CB2027  
-  
 }
+
+.col-centered{
+  float: none;
+  margin: 0 auto;
+}
+

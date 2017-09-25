@@ -2,9 +2,11 @@ import React, {Component} from 'react';
 // import { connect } from 'react-redux';
 import Paper from 'material-ui/Paper';
 import store from '../store';
+import Center from 'react-center';
+
 
 const Login = () => (
-  <div>
+  <Center>
     <div>
       <Paper zDepth={3} circle={true} style={{overflow:'hidden', height:400, width:400, margin:20, display: 'flex', flexDirection:'row', justifyContent:'center'}}>
         <a href='/auth/pinterest'>
@@ -12,7 +14,7 @@ const Login = () => (
         </a>
       </Paper>
     </div>
-  </div>
+  </Center>
 );
 
 export default Login;

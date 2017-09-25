@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import store from '../store';
 import { fetchUser } from '../reducers';
+import FlatButton from 'material-ui/FlatButton';
+import Center from 'react-center';
+
+
 
 class Home extends Component {
   constructor(props){
@@ -10,15 +14,23 @@ class Home extends Component {
   }
   componentDidMount(props){
     this.props.initializeState();
+    document.body.className="change-mood"
+  }
+  componentWillUnmount(props){
+    document.body.className=null;
   }
 
   render(){
     return (
-      <div className="change-mood">
-        <Link to="/random-bored">
-          <button>Change My Mood</button>
-        </Link>
-      </div>
+      <Center>
+        <div>
+          <Link to="/random-bored">
+            <img
+            style={{height:275}} src="http://www.clker.com/cliparts/7/A/Z/y/2/V/chrystal-ball.svg"/>
+            <div className="col-centered"><FlatButton label="Change My Mood"/></div>
+          </Link>
+        </div>
+      </Center>
     )
   }
 };
