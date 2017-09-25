@@ -16,11 +16,11 @@ export default (selectedPin={}, action) => {
 }
 
 //THUNK
-export const fetchSinglePin = pinId => dispatch => {
+export const setSelectedPin = pinId => dispatch => {
   return axios.get(`/api/pins/${pinId}`)
-  .then(res => res.data)
-  .then(pin => {
-    dispatch(selectedPin(pin));
+  .then(res => (res.data))
+  .then(newPin => {
+    dispatch(selectedPin(newPin[0]));
   })
   .catch(console.error);
 }

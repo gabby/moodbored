@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import store from '../store';
 import Paper from 'material-ui/Paper';
-import { fetchSinglePin } from '../reducers';
-
 
 
 class RandomBoard extends Component {
@@ -35,11 +33,8 @@ class RandomBoard extends Component {
           return <Paper 
             zDepth={1} 
             style={{overflow:'hidden', height:300, width:300, margin:20}}
-            key={pinId}
-            onClick={() => this.props.setSelectedPin(pinId)}>
-              <NavLink 
-                to={`/pins/${pinId}`}
-                >
+            key={pinId}>
+              <NavLink to={`/pins/${pinId}`}>
                 <img 
                 src={pins[idx].image.original.url} 
                 style={{width:'100%', height:'auto'}}/>
@@ -54,14 +49,10 @@ class RandomBoard extends Component {
 
 const mapStateToProps = state =>{
   return {
-    userPins: state.allPins
+    userPins: state.allPins,
+    selectedPin: state.selectedPin
   }
 }; 
 
-const mapDispatchToProps = dispatch => ({
-  setSelectedPin: pinId => {
-    dispatch(fetchSinglePin(pinId));
-  }
-})
 
-export default connect(mapStateToProps, mapDispatchToProps)(RandomBoard);
+export default connect(mapStateToProps)(RandomBoard);
