@@ -32,7 +32,7 @@ class RandomBoard extends Component {
           let pinId = pins[idx].id
           return <Paper 
             zDepth={1} 
-            style={{overflow:'hidden', height:300, width:300, margin:20}}
+            style={{overflow:'hidden', height:300, width:300, margin:20, textAlign: 'center', display: 'inline-block',}}
             key={pinId}>
               <NavLink to={`/pins/${pinId}`}>
                 <img 
