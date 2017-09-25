@@ -12,29 +12,26 @@ class Pin extends Component {
   }
 
   componentDidMount(){
-    console.log('MOUNTING')
     store.dispatch(setSelectedPin(this.props.match.params.pinId));
   }
 
   
   render(){
-   const pin = this.props.selectedPin;
    console.log('THIS IS A PIN')
-   //const imgUrl = pin.image.original.url;
+   const pin = this.props.selectedPin; 
    if (pin.id){
-     return (
-       <Card>
-         {
-        //    <CardMedia>
-        //    <a href={pin.link} target="_blank">
-        //      <img src={imgUrl} alt="" />
-        //    </a>
-        //  </CardMedia>
-        //  <CardText>{pin.note}</CardText>
-         }
-       </Card>
-     )
-   }  else return (<div></div>)
+    const imgUrl = pin.image.original.url;    
+    return (
+      <Card>
+          <CardMedia>
+          <a href={pin.link} target="_blank">
+            <img src={imgUrl} alt="" />
+          </a>
+        </CardMedia>
+        <CardText>{pin.note}</CardText>
+      </Card>
+    )
+   } else return (<div></div>)
   }
 };
 

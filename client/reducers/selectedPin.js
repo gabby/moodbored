@@ -17,10 +17,13 @@ export default (selectedPin={}, action) => {
 
 //THUNK
 export const setSelectedPin = pinId => dispatch => {
+  console.log(pinId)
   return axios.get(`/api/pins/${pinId}`)
   .then(res => (res.data))
   .then(newPin => {
-    dispatch(selectedPin(newPin[0]));
+    // console.log('This is the newpin')
+    // console.log(newPin);
+    dispatch(selectedPin(newPin));
   })
   .catch(console.error);
 }
