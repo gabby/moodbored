@@ -19,13 +19,19 @@ class Pin extends Component {
   render(){
    console.log('THIS IS A PIN')
    const pin = this.props.selectedPin; 
+   const user = this.props.userInfo;
    if (pin.id){
     const imgUrl = pin.image.original.url;    
     return (
       <Card>
-          <CardMedia>
+        <CardHeader
+        title={`${user.first_name} ${user.last_name}`}
+        subtitle={user.username}
+        avatar={user.image}
+         />
+        <CardMedia>
           <a href={pin.link} target="_blank">
-            <img src={imgUrl} alt="" />
+            <img style={{height:575, margin:20, display: 'flex', flexDirection:'row', justifyContent:'center'}} src={imgUrl} alt="" />
           </a>
         </CardMedia>
         <CardText>{pin.note}</CardText>
@@ -37,7 +43,8 @@ class Pin extends Component {
 
 const mapStateToProps = state =>{
   return {
-    selectedPin: state.selectedPin
+    selectedPin: state.selectedPin,
+    userInfo: state.currentUser
   }
 }; 
 
