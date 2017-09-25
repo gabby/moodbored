@@ -20,7 +20,7 @@ export default (allPins=[], action) => {
 
 //THUNK
 export const fetchPins = userId => dispatch => {
-  return axios.get(`/api/pins/${userId}`)
+  return axios.get(`/api/pins/user/${userId}`)
   .then(res => res.data)
   .then(pins => {
     dispatch(fetchAllPins(pins));
