@@ -27,7 +27,9 @@ class Home extends Component {
           <Link to="/random-bored">
             <img
             style={{height:275}} src="http://www.clker.com/cliparts/7/A/Z/y/2/V/chrystal-ball.svg"/>
-            <div className="col-centered"><FlatButton label="Change My Mood"/></div>
+            <Center>
+              <div className="col-centered"><FlatButton label="Change My Mood"/></div>
+            </Center>
           </Link>
         </div>
       </Center>
