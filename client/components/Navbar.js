@@ -30,9 +30,9 @@ const mapStateToProps = state =>{
   }
 }; 
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch, ownProps) => ({
   handleLogout: () => {
-    dispatch(logout());
+    dispatch(logout(ownProps.history));
   }
 })
 

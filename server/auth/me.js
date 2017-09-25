@@ -20,7 +20,7 @@ router.put('/', (req, res, next) => {
   })
 })
 
-router.delete('/logout', (req, res, next) => {
+router.post('/logout', (req, res, next) => {
   req.logOut();
   res.sendStatus(204);
 })

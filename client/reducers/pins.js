@@ -19,11 +19,11 @@ export default (allPins=[], action) => {
 }
 
 //THUNK
-export const fetchPins = pinId => dispatch => {
-  return axios.get(`/api/pins/${pinId}`)
+export const fetchPins = userId => dispatch => {
+  return axios.get(`/api/pins/${userId}`)
   .then(res => res.data)
-  .then(pin => {
-    dispatch(fetchAllPins(pin));
+  .then(pins => {
+    dispatch(fetchAllPins(pins));
   })
   .catch(console.error);
 }

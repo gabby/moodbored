@@ -8,23 +8,22 @@ class Pin extends Component {
   constructor(props){
     super(props)
   }
+
   
   render(){
-    // const imgUrl =this.props.selectedPin.image.original.url;
-    // const pin = this.props.selectedPin;
+   const pin = this.props.selectedPin;
+   console.log('THIS IS A PIN')
+   console.log(pin);
+   const imgUrl = pin.image.original.url;
     return (
       <Card>
-        <CardText>HELLOOO</CardText>
-      { 
-      //   <CardMedia>
-      //   <a href={pin.link} target="_blank">
-      //     <img src={imgUrl} alt="" />
-      //   </a>
-      // </CardMedia>
-      // <CardText>{pin.note}</CardText>
-    }
+        <CardMedia>
+          <a href={pin.link} target="_blank">
+            <img src={imgUrl} alt="" />
+          </a>
+        </CardMedia>
+        <CardText>{pin.note}</CardText>
       </Card>
-
     )
   }
 };

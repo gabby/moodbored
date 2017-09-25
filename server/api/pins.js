@@ -14,12 +14,11 @@ router.get('/:userId', (req, res, next) => {
 }); 
 
 router.get('/:pinId', (req, res, next) => {
-  Pin.findOne({
-    where: {
-      id: req.params.pinId
-    }
-  })
+  console.log('INSIDE ROUTE');
+  console.log(req.params.pinId)
+  Pin.findById(req.params.pinId)
   .then(pin => {
+    console.log(pin);
     res.status(200).json(pin);
   })
   .catch(next);

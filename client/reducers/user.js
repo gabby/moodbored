@@ -33,8 +33,11 @@ export const fetchUser = () => dispatch => {
 }
 
 export const logout = () => dispatch => {
-  dispatch(removeUser());
-  dispatch(resetPins());
-  axios.delete('/auth/me/logout')
+  axios.post('/auth/me/logout')
+  .then(() => {
+    dispatch(removeUser());
+    dispatch(resetPins());
+  })
+  .then(() => history.push('/'))
   .catch(err => console.error('logout unsuccessful', err));
 }; 

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import store from '../store';
 import Paper from 'material-ui/Paper';
-import { fetchPin } from '../reducers';
+import { fetchSinglePin } from '../reducers';
 
 
 
@@ -35,7 +35,7 @@ class RandomBoard extends Component {
           return <Paper 
             zDepth={1} 
             style={{overflow:'hidden', height:300, width:300, margin:20}}
-            key={randomIdx.indexOf(idx)}
+            key={pinId}
             onClick={() => this.props.setSelectedPin(pinId)}>
               <NavLink 
                 to={`/pins/${pinId}`}
@@ -60,7 +60,7 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = dispatch => ({
   setSelectedPin: pinId => {
-    dispatch(fetchPin(pinId));
+    dispatch(fetchSinglePin(pinId));
   }
 })
 

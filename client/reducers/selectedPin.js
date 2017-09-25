@@ -16,7 +16,7 @@ export default (selectedPin={}, action) => {
 }
 
 //THUNK
-export const fetchPin = pinId => dispatch => {
+export const fetchSinglePin = pinId => dispatch => {
   return axios.get(`/api/pins/${pinId}`)
   .then(res => res.data)
   .then(pin => {
