@@ -14,7 +14,7 @@ class Home extends Component {
 
   render(){
     return (
-      <div>
+      <div className="change-mood">
         <Link to="/random-bored">
           <button>Change My Mood</button>
         </Link>

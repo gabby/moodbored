@@ -38,6 +38,5 @@ export const logout = () => dispatch => {
     dispatch(removeUser());
     dispatch(resetPins());
   })
-  .then(() => history.push('/'))
   .catch(err => console.error('logout unsuccessful', err));
 }; 
