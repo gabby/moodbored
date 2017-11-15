@@ -7,7 +7,7 @@ passport.use(new PinterestStrategy({
   clientID: process.env.PINTEREST_APP_ID,
   clientSecret: process.env.PINTEREST_APP_SECRET,
   scope: ['read_public', 'read_relationships', 'write_public'],
-  callbackURL: "https://39341e59.ngrok.io/auth/pinterest/callback",
+  callbackURL: "https://5fb34fd1.ngrok.io/auth/pinterest/callback",
   state: true
 },
   function(accessToken, refreshToken, profile, done) {
